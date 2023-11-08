@@ -452,10 +452,18 @@ public class Mech implements ifUnit, ifBattleforce {
         }
 
         // switch the cockpit
-        if( IndustrialMech ) {
-            CurCockpit.SetIndustrialCockpit();
+        if ( IsPrimitive() ) {
+            if( IndustrialMech ) {
+                CurCockpit.SetPrimIndustrialCockpit();
+            } else {
+                CurCockpit.SetPrimitiveCockpit();
+            }
         } else {
-            CurCockpit.SetStandardCockpit();
+            if( IndustrialMech ) {
+                CurCockpit.SetIndustrialCockpit();
+            } else {
+                CurCockpit.SetStandardCockpit();
+            }
         }
 
         // switch the heat sinks

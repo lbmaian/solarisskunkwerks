@@ -47,6 +47,8 @@ public class stCockpitStandard implements ifCockpit, ifState {
         AC.SetCLCodes( 'D', 'X', 'C', 'C', 'C' );
         AC.SetCLDates( 0, 0, false, 2468, 0, 0, false, false );
         AC.SetCLFactions( "", "", "TH", "" );
+        AC.SetPBMAllowed(true);
+        AC.SetPIMAllowed(true);
         AC.SetSuperHeavyCompatible(false);
         AC.SetRulesLevels( AvailableCode.RULES_INTRODUCTORY, AvailableCode.RULES_UNALLOWED, AvailableCode.RULES_UNALLOWED, AvailableCode.RULES_UNALLOWED, AvailableCode.RULES_UNALLOWED );
     }
