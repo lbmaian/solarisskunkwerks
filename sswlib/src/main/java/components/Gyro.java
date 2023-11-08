@@ -37,6 +37,7 @@ public class Gyro extends abPlaceable {
                                 ISHeavy = new stGyroISHeavy(),
                                 ISXL = new stGyroISXL(),
                                 ISSH = new stGyroISSuperHeavy(),
+                                Primitive = new stGyroPrimitive(),
                                 None = new stGyroNone();
     private ifGyro CurConfig = Standard;
 
@@ -67,6 +68,10 @@ public class Gyro extends abPlaceable {
      */
     public void SetSuperHeavy() {
         CurConfig = ISSH;
+    }
+
+    public void SetPrimitive() {
+        CurConfig = Primitive;
     }
 
     public void SetNone() {
@@ -112,10 +117,15 @@ public class Gyro extends abPlaceable {
     }
 
     public double GetTonnage() {
+        Engine engine = Owner.GetEngine();
+        int rating = engine.GetRating();
+        if( engine.IsPrimitive() && CurConfig != Primitive) {
+            rating = Owner.GetWalkingMP() * Owner.GetTonnage();
+        }
         if( IsArmored() ) {
-            return CurConfig.GetTonnage( Owner.GetEngine().GetRating() ) + ( NumCrits() * 0.5 );
+            return CurConfig.GetTonnage( rating ) + ( NumCrits() * 0.5 );
         } else {
-            return CurConfig.GetTonnage( Owner.GetEngine().GetRating() );
+            return CurConfig.GetTonnage( rating );
         }
     }
 
@@ -201,7 +211,7 @@ public class Gyro extends abPlaceable {
 
     public ifState[] GetStates() {
         ifState[] retval = { (ifState) Standard,
-            (ifState) ISCompact, (ifState) ISHeavy, (ifState) ISXL, (ifState) None, (ifState) ISSH };
+            (ifState) ISCompact, (ifState) ISHeavy, (ifState) ISXL, (ifState) None, (ifState) ISSH, (ifState) Primitive };
         return retval;
     }
 
