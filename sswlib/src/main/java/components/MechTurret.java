@@ -47,6 +47,7 @@ public class MechTurret extends abPlaceable implements ifTurret {
         AC.SetCLCodes( 'C', 'X', 'X', 'F', 'E' );
         AC.SetCLDates( 0, 0, false, 3082, 0, 0, false, false );
         AC.SetCLFactions( "", "", "PS", "" );
+        AC.SetPBMAllowed(true);
     }
 
     @Override
