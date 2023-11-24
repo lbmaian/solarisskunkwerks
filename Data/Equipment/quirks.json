@@ -1638,8 +1638,8 @@
   },
   "Efficient Frame Layout": {
     "name": "Efficient Frame Layout",
-    "cost": 3,
-    "description": "This unit may be stored in bays as if it ten tons lighter than it is. Thus a 75 ton vehicle would count as a 65 ton vehicle for the purposes of transport. Applies to any Medium or Larger ASFs, Support Vehicles, Combat Vehicles and BattleMechs.",
+    "cost": 2,
+    "description": "This unit may be stored in bays as if it was a smaller vehicle than it is. When determining the needed bay type for transport, reduce the effective tonnage of the vehicle by 5 tons per 2 per points spent on it. Applies to any Medium or Larger ASFs, Support Vehicles, Combat Vehicles and BattleMechs.",
     "positive": true,
     "battlemech": true,
     "industrialmech": true,
@@ -1652,7 +1652,7 @@
     "warship": false,
     "spacestation": false,
     "protomech": false,
-    "isvariable": false
+    "isvariable": true
   },
   "Enhanced Safety Measures": {
     "name": "Enhanced Safety Measures",
@@ -1747,7 +1747,7 @@
   "Bombardment Mount": {
     "name": "Bombardment Mount",
     "cost": 1,
-    "description": "Weapons effected by this quirk are mounted in such a way that they can only be fired in indirect fire mode. This quirk can only effect weapons with an indirect fire mode. Weapons effected by this quirk can not be used to fire within their short ranged band if they normally could use indirect fire within their short range band.",
+    "description": "Weapons effected by this quirk are mounted in such a way that they can only be fired in indirect fire mode. This quirk can only effect weapons with an indirect fire mode. Weapons effected by this quirk can not be used to fire within their short ranged band if they normally could use indirect fire within their short range band. 1 Point per 5 Damage.",
     "positive": false,
     "battlemech": true,
     "industrialmech": true,
@@ -1761,6 +1761,24 @@
     "spacestation": false,
     "protomech": true,
     "isvariable": true
+  },
+  "Complex Production": {
+    "name": "Complex Production",
+    "cost": 1,
+    "description": "Increases BV by 20% for the purposes of determining production rates.",
+    "positive": false,
+    "battlemech": true,
+    "industrialmech": true,
+    "combatvehicle": true,
+    "battlearmor": true,
+    "aerospacefighter": true,
+    "conventionalfighter": true,
+    "dropship": false,
+    "jumpship": false,
+    "warship": false,
+    "spacestation": false,
+    "protomech": true,
+    "isvariable": false
   },
   "Ghost Heat": {
     "name": "Ghost Heat",
@@ -1837,7 +1855,7 @@
   "Limited Elevation": {
     "name": "Limited Elevation",
     "cost": 1,
-    "description": "Weapons effected by this negative quirk have a limited ability to be shifted up or down, and can not be fired at foes more then one vertical level higher or lower then the attacking unit.",
+    "description": "Weapons effected by this negative quirk have a limited ability to be shifted up or down, and can not be fired at foes more then one vertical level higher or lower then the attacking unit. 1 Point per 7 Damage.",
     "positive": false,
     "battlemech": true,
     "industrialmech": true,
@@ -2017,7 +2035,7 @@
   "Volatile Energy Cells": {
     "name": "Volatile Energy Cells",
     "cost": 1,
-    "description": "This design's energy weapons make use of capacitors that are volatile and can overheat explosively.",
+    "description": "This design's energy weapons make use of capacitors that are volatile and can overheat explosively. 1 Point per 5 Damage.",
     "positive": false,
     "battlemech": true,
     "industrialmech": true,
