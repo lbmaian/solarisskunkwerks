@@ -5571,6 +5571,8 @@ public class Mech implements ifUnit, ifBattleforce {
         Lookup.put( "Endo-Steel", new VChassisSetEndoSteel() );
         Lookup.put( "(IS) Endo-Steel", new VChassisSetEndoSteel() );
         Lookup.put( "(CL) Endo-Steel", new VChassisSetEndoSteel() );
+        Lookup.put( "Endo-Steel Prototype", new VChassisSetEndoSteelPrototype() );
+        Lookup.put( "(IS) Endo-Steel Prototype", new VChassisSetEndoSteelPrototype() );
         Lookup.put( "Endo-Composite", new VChassisSetEndoComposite() );
         Lookup.put( "(IS) Endo-Composite", new VChassisSetEndoComposite() );
         Lookup.put( "(CL) Endo-Composite", new VChassisSetEndoComposite() );

@@ -43,6 +43,8 @@ public class InternalStructure extends abPlaceable {
                              ISESBP = new stChassisISESBP(),
                              ISESQD = new stChassisISESQD(),
                              ISESTP = new stChassisISESTP(),
+                             ISESBPP = new stChassisISESBPP(),
+                             ISESQDP = new stChassisISESQDP(),
                              ISCOBP = new stChassisISCOBP(),
                              ISCOQD = new stChassisISCOQD(),
                              ISECBP = new stChassisISECBP(),
@@ -105,6 +107,16 @@ public class InternalStructure extends abPlaceable {
     public void SetISESTP() {
         // Set this chassis to an Inner Sphere Endo Steel Tripod
         Config = ISESTP;
+    }
+
+    public void SetISESBPP() {
+        // Set this chassis to an Inner Sphere Prototype Endo Steel Biped
+        Config = ISESBPP;
+    }
+
+    public void SetISESQDP() {
+        // Set this chassis to an Inner Sphere Prototype Endo Steel Quad
+        Config = ISESQDP;
     }
 
     public void SetISCOBP() {
@@ -333,7 +345,7 @@ public class InternalStructure extends abPlaceable {
     }
 
     public ifState[] GetStates( boolean biped ) {
-        ifState[] retval = { null, null, null, null, null, null, null, null, null, null, null, null };
+        ifState[] retval = { null, null, null, null, null, null, null, null, null, null, null, null, null };
         if ( Owner.IsQuad() ) {
             retval[0] = (ifState) MSQD;
             retval[1] = (ifState) ISESQD;
@@ -345,6 +357,7 @@ public class InternalStructure extends abPlaceable {
             retval[7] = (ifState) IMQD;
             retval[8] = (ifState) PBMQD;
             retval[9] = (ifState) PIMQD;
+            retval[10] = (ifState) ISESQDP;
         } else if ( Owner.IsTripod() ) {
             retval[0] = (ifState) MSTP;
             retval[1] = (ifState) ISESTP;
@@ -361,6 +374,7 @@ public class InternalStructure extends abPlaceable {
             retval[9] = (ifState) PIMBP;
             retval[10] = (ifState) SHBP;
             retval[11] = (ifState) SHESBP;
+            retval[12] = (ifState) ISESBPP;
         }
         return retval;
     }
