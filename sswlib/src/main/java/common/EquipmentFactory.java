@@ -464,16 +464,23 @@ public class EquipmentFactory {
     public Ammunition GetAmmoByName( String name, ifUnit m ) {
         // returns an ammunition based on the given name
         for( int i = 0; i < Ammo.size(); i++ ) {
-            if( ((abPlaceable) Ammo.get( i )).LookupName().equals( name ) ) {
+            if( MatchesLookupName( name, ((abPlaceable) Ammo.get( i )).LookupName() ) ) {
                 return (Ammunition) GetCopy( (abPlaceable) Ammo.get( i ), m );
             }
+        }
+        // Backcompat: if no corresponding ammo for variant found, try base variant
+        if( name.matches( ".* \\([^\\)]+\\)" ) ) {
+            return GetAmmoByName( name.replaceFirst( " \\([^\\)]+\\)", "" ), m );
+        }
+        if( name.contains( "Light " ) ) {
+            return GetAmmoByName( name.replace("Light ", ""), m );
         }
         return null;
     }
 
     public Equipment GetEquipmentByName(String name, ifUnit m ) {
         for (int i = 0; i < Equipment.size(); i++) {
-            if (((abPlaceable) Equipment.get(i)).LookupName().equals(name)) {
+            if( MatchesLookupName( name, ((abPlaceable) Equipment.get(i)).LookupName() )) {
                 return (Equipment) GetCopy((abPlaceable) Equipment.get(i), m);
             }
         }
@@ -483,7 +490,7 @@ public class EquipmentFactory {
 
     public PhysicalWeapon GetPhysicalWeaponByName( String name, ifUnit m ) {
         for( int i = 0; i < PhysicalWeapons.size(); i++ ) {
-            if( ((abPlaceable) PhysicalWeapons.get( i )).LookupName().equals( name ) ) {
+            if( MatchesLookupName( name, ((abPlaceable) PhysicalWeapons.get( i )).LookupName() ) ) {
                 PhysicalWeapon p = (PhysicalWeapon) GetCopy( (abPlaceable) PhysicalWeapons.get( i ), m );
                 p.SetOwner( m );
                 return p;
@@ -497,7 +504,7 @@ public class EquipmentFactory {
     public abPlaceable GetRangedWeaponByName( String name, ifUnit m ) {
         // searches the weapon database for the named item and returns it
         for( int i = 0; i < RangedWeapons.size(); i++ ) {
-            if( ((abPlaceable) RangedWeapons.get( i )).LookupName().equals( name ) ) {
+            if( MatchesLookupName( name, ((abPlaceable) RangedWeapons.get( i )).LookupName() ) ) {
                 return (abPlaceable) GetCopy( (abPlaceable) RangedWeapons.get( i ), m );
             }
         }
@@ -530,17 +537,17 @@ public class EquipmentFactory {
             return GetAmmoByName( name, m );
         } else {
             for (int i = 0; i < Equipment.size(); i++) {
-                if (((abPlaceable) Equipment.get(i)).LookupName().equals(name)) {
+                if( MatchesLookupName( name, ((abPlaceable) Equipment.get(i)).LookupName() )) {
                     return GetCopy((abPlaceable) Equipment.get(i), m);
                 }
             }
             for( int i = 0; i < RangedWeapons.size(); i++ ) {
-                if( ((abPlaceable) RangedWeapons.get( i )).LookupName().equals( name ) ) {
+                if( MatchesLookupName( name, ((abPlaceable) RangedWeapons.get( i )).LookupName() ) ) {
                     return GetCopy( (abPlaceable) RangedWeapons.get( i ), m );
                 }
             }
             for( int i = 0; i < PhysicalWeapons.size(); i++ ) {
-                if( ((abPlaceable) PhysicalWeapons.get( i )).LookupName().equals( name ) ) {
+                if( MatchesLookupName( name, ((abPlaceable) PhysicalWeapons.get( i )).LookupName() ) ) {
                     PhysicalWeapon p = (PhysicalWeapon) GetCopy( (abPlaceable) PhysicalWeapons.get( i ), m );
                     p.SetOwner( (Mech) m );
                     return (abPlaceable) p;
@@ -548,6 +555,55 @@ public class EquipmentFactory {
             }
         }
         return null;
+    }
+
+    // Backcompat lookup
+    private boolean MatchesLookupName( String name, String lookupName ) {
+        if( name.equals( lookupName ) ) {
+            return true;
+        }
+        if( name.contains( "Vehicle Flamer" ) ) {
+            if( MatchesLookupName( name.replaceAll( "Vehicle Flamer", "Fueled Flamer" ), lookupName ) ) {
+                return true;
+            }
+        } else if ( name.contains( "Flamer" ) && ! name.contains( "Fusion Flamer" )) {
+            if( MatchesLookupName( name.replaceAll( "Flamer", "Fusion Flamer" ), lookupName ) ) {
+                return true;
+            }
+        }
+        if( name.contains( "(Artemis IV Capable)" ) ) {
+            if( MatchesLookupName( name.replaceAll( "Artemis IV Capable", "Apollo" ), lookupName ) ) {
+                return true;
+            }
+        }
+        if( name.contains( "Streak " ) ) {
+            if( MatchesLookupName(
+                    name.replaceAll( "^((?:\\(\\w+\\))?[ @]*)?Streak (.+?)( \\(.*\\))?$", "$1$2 (Streak)$3" ),
+                    lookupName.replaceAll( "^((?:\\(\\w+\\))?[ @]*)?Streak (.+?)( \\(.*\\))?$", "$1$2 (Streak)$3" ) ) ) {
+                return true;
+            }
+        }
+        if( name.contains( "Autocannon" ) ) {
+            if( MatchesLookupName( name.replaceAll( "Autocannon", "AC" ), lookupName ) ) {
+                return true;
+            }
+        }
+        if( name.contains( "Light " ) ) {
+            if( MatchesLookupName( name.replaceAll( "Light ", "L" ), lookupName ) ) {
+                return true;
+            }
+        }
+        if( name.contains( "Extended Range " ) ) {
+            if( MatchesLookupName( name.replaceAll( "Extended Range ", "ER " ), lookupName ) ) {
+                return true;
+            }
+        }
+        if( name.startsWith( "(IS) ") || name.startsWith( "(CL) ") ) {
+            if( MatchesLookupName( name.substring( 5 ), lookupName ) ) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public final void BuildMGArrays() {
