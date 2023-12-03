@@ -133,7 +133,7 @@ public class EquipmentFactory {
             Equipment.add( new Hitch() );
             Equipment.add( new ArmoredMotiveSystem(((CombatVehicle) m).GetLoadout()));
         }
-        BuildMGArrays();
+        //BuildMGArrays();
     }
 
     public abPlaceable GetCopy( abPlaceable p, ifUnit m ) {
