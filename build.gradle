@@ -4,7 +4,7 @@ plugins {
 }
 
 allprojects {
-    version '0.7.6.1'
+    version '0.7.6.1q'
     ext {
         release='Snapshot'
         rev=versionDetails().gitHash
