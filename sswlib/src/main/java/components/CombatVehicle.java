@@ -2591,7 +2591,7 @@ public class CombatVehicle implements ifUnit, ifBattleforce {
                     retval += ( (abPlaceable) v.get( i ) ).GetCost();
                 }
             }
-            if( Prefs.getBoolean( "CostAmmoMult", false ) ) {
+            if( Prefs.getBoolean( "CostAmmoMult", true ) ) {
                 retval *= GetCostMult() * GetConfigMultiplier();
             }
             return retval;
