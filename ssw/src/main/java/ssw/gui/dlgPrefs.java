@@ -81,8 +81,8 @@ public class dlgPrefs extends javax.swing.JDialog {
             chkHeatAllMP.setEnabled( true );
         }
         chkHeatUAC.setSelected( Prefs.getBoolean( "HeatACFullRate", false ) );
-        chkHeatStreaks.setSelected( Prefs.getBoolean( "HeatStreaksHalfRate", false ) );
-        chkCostAmmoMult.setSelected( Prefs.getBoolean( "CostAmmoMult", false ) );
+        chkHeatStreaks.setSelected( Prefs.getBoolean( "HeatStreaksHalfRate", true ) );
+        chkCostAmmoMult.setSelected( Prefs.getBoolean( "CostAmmoMult", true ) );
         chkAutoAddECM.setSelected( Prefs.getBoolean( "AutoAddECM", true ) );
 
         chkMaxNotInt.setSelected( Prefs.getBoolean( "UseMaxArmorInstead", false ) );
@@ -218,8 +218,8 @@ public class dlgPrefs extends javax.swing.JDialog {
         Prefs.putBoolean( "HeatExcludeJumpMP", false );
         Prefs.putBoolean( "HeatExcludeAllMP", false );
         Prefs.putBoolean( "HeatACFullRate", false );
-        Prefs.putBoolean( "HeatStreaksHalfRate", false );
-        Prefs.putBoolean( "CostAmmoMult", false );
+        Prefs.putBoolean( "HeatStreaksHalfRate", true );
+        Prefs.putBoolean( "CostAmmoMult", true );
         Prefs.putBoolean( "UseMaxArmorInstead", false );
         Prefs.putBoolean( "ArmorUseCustomPercent", false );
         Prefs.putBoolean( "ArmorMaxHead", true );

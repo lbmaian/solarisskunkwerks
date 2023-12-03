@@ -2302,7 +2302,7 @@ public class Mech implements ifUnit, ifBattleforce {
         return GetWeaponHeat(Prefs.getBoolean("HeatExcludeOS", false), 
                              Prefs.getBoolean( "HeatExcludeRear", false),
                              Prefs.getBoolean( "HeatACFullRate", false),
-                             Prefs.getBoolean( "HeatStreaksHalfRate", false),
+                             Prefs.getBoolean( "HeatStreaksHalfRate", true),
                              Prefs.getBoolean( "HeatExcludeEquips", false));
     }
 
@@ -3421,7 +3421,7 @@ public class Mech implements ifUnit, ifBattleforce {
                     retval += ( (abPlaceable) v.get( i ) ).GetCost();
                 }
             }
-            if( Prefs.getBoolean( "CostAmmoMult", false ) ) {
+            if( Prefs.getBoolean( "CostAmmoMult", true ) ) {
                 retval *= GetCostMult();
             }
             return retval;
