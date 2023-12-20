@@ -595,6 +595,11 @@ public class PhysicalWeapon extends abPlaceable implements ifWeapon {
     }
 
     @Override
+    public boolean CanSplit() {
+        return CanSplit;
+    }
+
+    @Override
     public String GetManufacturer() {
         return Manufacturer;
     }
