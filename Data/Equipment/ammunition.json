@@ -2927,7 +2927,7 @@
   },
   "@ Prototype AC/10": {
     "ActualName": "Ammo: Prototype AC/10",
-    "CritName": "@ PAC/10",
+    "CritName": "@ Prototype AC/10",
     "LookupName": "@ Prototype AC/10",
     "MegaMekName": "ISAC10 Ammo",
     "BookRef": "Jihad Secrets: The Blake Documents",
@@ -3004,7 +3004,7 @@
   },
   "@ Prototype AC/20": {
     "ActualName": "Ammo: Prototype AC/20",
-    "CritName": "@ PAC/20",
+    "CritName": "@ Prototype AC/20",
     "LookupName": "@ Prototype AC/20",
     "MegaMekName": "ISAC20 Ammo",
     "BookRef": "Jihad Secrets: The Blake Documents",

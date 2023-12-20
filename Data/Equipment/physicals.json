@@ -1191,7 +1191,7 @@
     "ToHitMedium": -2,
     "ToHitLong": -2,
     "DamageAdd": 3,
-    "CritAdd": 1,
+    "CritAdd": 3,
     "PWClass": 1,
     "TonMult": 0.0,
     "CritMult": 0.0,
@@ -1214,7 +1214,7 @@
     "Alloc_Torso": false,
     "Alloc_Arms": false,
     "Alloc_Legs": true,
-    "CanSplit": false,
+    "CanSplit": true,
     "PowerAmps": false,
     "RequiresQuad": true,
     "Availability": {

@@ -578,13 +578,18 @@ public class EquipmentFactory {
         }
         if( name.contains( "Streak " ) ) {
             if( MatchesLookupName(
-                    name.replaceAll( "^((?:\\(\\w+\\))?[ @]*)?Streak (.+?)( \\(.*\\))?$", "$1$2 (Streak)$3" ),
-                    lookupName.replaceAll( "^((?:\\(\\w+\\))?[ @]*)?Streak (.+?)( \\(.*\\))?$", "$1$2 (Streak)$3" ) ) ) {
+                    name.replaceAll( "^(.*)Streak (.+?)( \\(.*\\))?$", "$1$2 (Streak)$3" ),
+                    lookupName.replaceAll( "^(.*)Streak (.+?)( \\(.*\\))?$", "$1$2 (Streak)$3" ) ) ) {
                 return true;
             }
         }
         if( name.contains( "Autocannon" ) ) {
             if( MatchesLookupName( name.replaceAll( "Autocannon", "AC" ), lookupName ) ) {
+                return true;
+            }
+        }
+        if( name.contains( "PAC" ) ) {
+            if( MatchesLookupName( name.replaceAll( "PAC", "Prototype AC" ), lookupName ) ) {
                 return true;
             }
         }
